@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var common_v1_common_pb = require('../../../common/v1/common_pb.js');
 goog.object.extend(proto, common_v1_common_pb);
@@ -193,7 +199,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.viam.component.arm.v1.MoveToJointPositionsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.viam.component.arm.v1.MoveToJointPositionsRequest.repeatedFields_, null);
 };
 goog.inherits(proto.viam.component.arm.v1.MoveToJointPositionsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1485,6 +1491,13 @@ proto.viam.component.arm.v1.MoveToPositionResponse.serializeBinaryToWriter = fun
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.viam.component.arm.v1.MoveToJointPositionsRequest.repeatedFields_ = [2];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1517,7 +1530,8 @@ proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.toObject = fun
 proto.viam.component.arm.v1.MoveToJointPositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    positions: (f = msg.getPositions()) && proto.viam.component.arm.v1.JointPositions.toObject(includeInstance, f),
+    positionsList: jspb.Message.toObjectList(msg.getPositionsList(),
+    proto.viam.component.arm.v1.JointPositions.toObject, includeInstance),
     extra: (f = msg.getExtra()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f)
   };
 
@@ -1562,7 +1576,7 @@ proto.viam.component.arm.v1.MoveToJointPositionsRequest.deserializeBinaryFromRea
     case 2:
       var value = new proto.viam.component.arm.v1.JointPositions;
       reader.readMessage(value,proto.viam.component.arm.v1.JointPositions.deserializeBinaryFromReader);
-      msg.setPositions(value);
+      msg.addPositions(value);
       break;
     case 99:
       var value = new google_protobuf_struct_pb.Struct;
@@ -1605,9 +1619,9 @@ proto.viam.component.arm.v1.MoveToJointPositionsRequest.serializeBinaryToWriter 
       f
     );
   }
-  f = message.getPositions();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getPositionsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       2,
       f,
       proto.viam.component.arm.v1.JointPositions.serializeBinaryToWriter
@@ -1643,39 +1657,40 @@ proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.setName = func
 
 
 /**
- * optional JointPositions positions = 2;
- * @return {?proto.viam.component.arm.v1.JointPositions}
+ * repeated JointPositions positions = 2;
+ * @return {!Array<!proto.viam.component.arm.v1.JointPositions>}
  */
-proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.getPositions = function() {
-  return /** @type{?proto.viam.component.arm.v1.JointPositions} */ (
-    jspb.Message.getWrapperField(this, proto.viam.component.arm.v1.JointPositions, 2));
+proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.getPositionsList = function() {
+  return /** @type{!Array<!proto.viam.component.arm.v1.JointPositions>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.viam.component.arm.v1.JointPositions, 2));
 };
 
 
 /**
- * @param {?proto.viam.component.arm.v1.JointPositions|undefined} value
+ * @param {!Array<!proto.viam.component.arm.v1.JointPositions>} value
  * @return {!proto.viam.component.arm.v1.MoveToJointPositionsRequest} returns this
 */
-proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.setPositions = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.setPositionsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * @param {!proto.viam.component.arm.v1.JointPositions=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.viam.component.arm.v1.JointPositions}
+ */
+proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.addPositions = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.viam.component.arm.v1.JointPositions, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.viam.component.arm.v1.MoveToJointPositionsRequest} returns this
  */
-proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.clearPositions = function() {
-  return this.setPositions(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.hasPositions = function() {
-  return jspb.Message.getField(this, 2) != null;
+proto.viam.component.arm.v1.MoveToJointPositionsRequest.prototype.clearPositionsList = function() {
+  return this.setPositionsList([]);
 };
 
 

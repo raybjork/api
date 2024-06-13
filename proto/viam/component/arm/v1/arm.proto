@@ -130,7 +130,7 @@ message MoveToJointPositionsRequest {
   string name = 1;
   // A list of joint positions
   // There should be 1 entry in the list per joint DOF, ordered spatially from the base toward the end effector
-  JointPositions positions = 2;
+  repeated JointPositions positions = 2;
   // Additional arguments to the method
   google.protobuf.Struct extra = 99;
 }

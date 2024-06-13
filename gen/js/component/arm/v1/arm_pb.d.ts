@@ -176,10 +176,10 @@ export class MoveToJointPositionsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  hasPositions(): boolean;
-  clearPositions(): void;
-  getPositions(): JointPositions | undefined;
-  setPositions(value?: JointPositions): void;
+  clearPositionsList(): void;
+  getPositionsList(): Array<JointPositions>;
+  setPositionsList(value: Array<JointPositions>): void;
+  addPositions(value?: JointPositions, index?: number): JointPositions;
 
   hasExtra(): boolean;
   clearExtra(): void;
@@ -199,7 +199,7 @@ export class MoveToJointPositionsRequest extends jspb.Message {
 export namespace MoveToJointPositionsRequest {
   export type AsObject = {
     name: string,
-    positions?: JointPositions.AsObject,
+    positionsList: Array<JointPositions.AsObject>,
     extra?: google_protobuf_struct_pb.Struct.AsObject,
   }
 }
