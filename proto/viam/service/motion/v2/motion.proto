@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-package viam.service.motion.x;
+package viam.service.motion.x.v2;
 
 import "common/v1/common.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "go.viam.com/api/service/motion/x";
-option java_package = "com.viam.service.motion.x";
+option go_package = "go.viam.com/api/service/motion/v2";
+option java_package = "com.viam.service.motion.v2";
 
 // A MotionService declares the gRPC contract for a motion service
 service MotionService {
