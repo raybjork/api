@@ -6,8 +6,6 @@ import "common/v1/common.proto";
 import "service/motion/v1/motion.proto";
 
 import "google/api/annotations.proto";
-import "google/protobuf/struct.proto";
-import "google/protobuf/timestamp.proto";
 
 option go_package = "go.viam.com/api/service/motion/v2";
 option java_package = "com.viam.service.motion.v2";
