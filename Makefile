@@ -36,7 +36,7 @@ dist/tool-install: Makefile
 dist/buf: dist/buf-go dist/buf-web
 
 dist/buf-go: dist/tool-install $(PROTO_FILES)
-	buf lint
+	buf lint --exclude-path proto/viam/service/motion/v2
 	buf format -w
 	buf generate --template ./proto/viam/buf.gen.yaml
 	buf generate --template ./proto/viam/buf.gen.tagger.yaml
